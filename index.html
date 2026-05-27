@@ -21,7 +21,7 @@
 }
 html{scroll-behavior:smooth;}
 body{background:var(--black);color:var(--white);font-family:'Space Grotesk',sans-serif;overflow-x:hidden;}
-
+ 
 nav{position:fixed;top:0;left:0;width:100%;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:rgba(10,10,10,0.85);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,0.06);}
 .nav-logo{display:flex;align-items:center;gap:0.8rem;}
 .nav-logo-text{font-family:'Rajdhani',sans-serif;font-size:1.4rem;font-weight:700;letter-spacing:0.15em;color:var(--white);text-transform:uppercase;}
@@ -31,9 +31,9 @@ nav{position:fixed;top:0;left:0;width:100%;z-index:100;display:flex;align-items:
 .nav-links a:hover{color:var(--white);}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
 .hamburger span{width:24px;height:1.5px;background:var(--white);transition:all 0.3s;}
-
+ 
 section{min-height:100vh;position:relative;}
-
+ 
 #home{display:flex;flex-direction:column;justify-content:center;padding-top:80px;}
 .home-hero{position:relative;height:85vh;display:flex;align-items:flex-end;overflow:hidden;}
 .home-bg{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;}
@@ -47,7 +47,7 @@ section{min-height:100vh;position:relative;}
 .home-cta{display:inline-block;border:1px solid rgba(245,245,240,0.4);padding:0.75rem 2rem;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--white);text-decoration:none;transition:all 0.3s;}
 .home-cta:hover{background:var(--white);color:var(--black);}
 .home-scroll{position:absolute;right:3rem;top:50%;transform:translateY(-50%) rotate(90deg);font-size:0.65rem;letter-spacing:0.25em;color:rgba(245,245,240,0.3);text-transform:uppercase;}
-
+ 
 #chi-siamo{background:#0d0d0d;display:flex;flex-direction:column;justify-content:center;}
 .chisiamo-inner{padding:8rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
 .chisiamo-img-wrap{position:relative;}
@@ -63,7 +63,7 @@ section{min-height:100vh;position:relative;}
 .team-member{padding-bottom:0.9rem;border-bottom:1px solid rgba(255,255,255,0.06);}
 .team-name{font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;}
 .team-role{font-size:0.72rem;color:var(--muted);letter-spacing:0.08em;margin-top:0.2rem;line-height:1.4;}
-
+ 
 #fomo{background:#f5f5f0;color:#0a0a0a;display:flex;flex-direction:column;justify-content:center;}
 .fomo-inner{padding:8rem 3rem;}
 .fomo-title-wrap{text-align:center;margin-bottom:4rem;}
@@ -75,7 +75,7 @@ section{min-height:100vh;position:relative;}
 .fomo-text-block{max-width:760px;margin:0 auto;text-align:center;}
 .fomo-text-block p{font-size:0.95rem;line-height:1.9;color:#2a2a2a;margin-bottom:1.2rem;}
 .fomo-text-block .fomo-last{font-style:italic;font-size:1.05rem;font-weight:500;color:#0a0a0a;margin-top:2rem;}
-
+ 
 #raw{background:var(--black);display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
 #raw::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,255,255,0.012) 2px,rgba(255,255,255,0.012) 4px);pointer-events:none;}
 .raw-inner{padding:8rem 3rem;position:relative;z-index:1;}
@@ -89,7 +89,7 @@ section{min-height:100vh;position:relative;}
 .raw-text-block{max-width:760px;border-left:2px solid var(--rust);padding-left:2rem;}
 .raw-text-block p{font-size:0.95rem;line-height:1.9;color:rgba(245,245,240,0.55);margin-bottom:1.2rem;}
 .raw-last{font-family:'Pirata One',cursive;font-size:1.3rem;color:rgba(245,245,240,0.8);margin-top:2rem;}
-
+ 
 #zaini{background:#0d0d0d;display:flex;flex-direction:column;justify-content:center;}
 .zaini-inner{padding:8rem 3rem;}
 .zaini-title{font-family:'Rajdhani',sans-serif;font-size:clamp(2.5rem,6vw,5.5rem);font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.5rem;}
@@ -109,7 +109,7 @@ section{min-height:100vh;position:relative;}
 .carousel-dot.active{background:var(--white);width:20px;border-radius:3px;}
 .carousel-progress{flex:1;height:1px;background:rgba(255,255,255,0.1);position:relative;overflow:hidden;}
 .carousel-progress-bar{height:100%;background:rgba(255,255,255,0.5);width:0%;}
-
+ 
 #contatti{background:#0a0a0a;display:flex;flex-direction:column;justify-content:center;border-top:1px solid rgba(255,255,255,0.05);}
 .contatti-inner{padding:8rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;}
 .contatti-section-label{font-size:0.68rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;display:flex;align-items:center;gap:0.8rem;}
@@ -125,11 +125,11 @@ section{min-height:100vh;position:relative;}
 .contatti-dm{font-size:0.82rem;line-height:1.8;color:rgba(245,245,240,0.45);border-top:1px solid rgba(255,255,255,0.06);padding-top:1.5rem;}
 .contatti-big{font-family:'Rajdhani',sans-serif;font-size:clamp(3rem,6vw,5rem);font-weight:700;text-transform:uppercase;line-height:0.9;margin-bottom:2rem;letter-spacing:0.02em;}
 .contatti-tagline{font-size:0.85rem;line-height:1.8;color:rgba(245,245,240,0.4);max-width:320px;}
-
+ 
 footer{padding:2rem 3rem;border-top:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between;align-items:center;}
 .footer-brand{font-family:'Rajdhani',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.2em;color:rgba(255,255,255,0.2);text-transform:uppercase;}
 .footer-copy{font-size:0.68rem;letter-spacing:0.1em;color:rgba(255,255,255,0.15);}
-
+ 
 @media(max-width:768px){
   nav{padding:1rem 1.5rem;}
   .nav-links{display:none;flex-direction:column;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(10,10,10,0.98);align-items:center;justify-content:center;gap:2.5rem;z-index:200;}
@@ -149,7 +149,7 @@ footer{padding:2rem 3rem;border-top:1px solid rgba(255,255,255,0.05);display:fle
 </style>
 </head>
 <body>
-
+ 
 <nav>
   <div class="nav-logo">
     <div class="nav-logo-badge">A//O</div>
@@ -167,7 +167,7 @@ footer{padding:2rem 3rem;border-top:1px solid rgba(255,255,255,0.05);display:fle
     <span></span><span></span><span></span>
   </div>
 </nav>
-
+ 
 <!-- HOME -->
 <section id="home">
   <div class="home-hero">
@@ -189,7 +189,7 @@ footer{padding:2rem 3rem;border-top:1px solid rgba(255,255,255,0.05);display:fle
     <span class="home-scroll">Scroll</span>
   </div>
 </section>
-
+ 
 <!-- CHI SIAMO -->
 <section id="chi-siamo">
   <div class="chisiamo-inner">
@@ -219,7 +219,7 @@ footer{padding:2rem 3rem;border-top:1px solid rgba(255,255,255,0.05);display:fle
     </div>
   </div>
 </section>
-
+ 
 <!-- FOMO//2LIFE -->
 <section id="fomo">
   <div class="fomo-inner">
@@ -228,11 +228,11 @@ footer{padding:2rem 3rem;border-top:1px solid rgba(255,255,255,0.05);display:fle
       <p class="fomo-subtitle">La divisione della luce</p>
     </div>
     <div class="fomo-grid">
-      <div class="fomo-cell"><div class="fomo-cell-placeholder">Foto 1</div></div>
-      <div class="fomo-cell"><div class="fomo-cell-placeholder">Foto 2</div></div>
-      <div class="fomo-cell"><div class="fomo-cell-placeholder">Foto 3</div></div>
-      <div class="fomo-cell"><div class="fomo-cell-placeholder">Foto 4</div></div>
-      <div class="fomo-cell"><div class="fomo-cell-placeholder">Foto 5</div></div>
+      <div class="fomo-cell"><img src="fomo1.jpeg" alt="FOMO//2LIFE 1" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="fomo-cell"><img src="fomo2.jpeg" alt="FOMO//2LIFE 2" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="fomo-cell"><img src="fomo3.jpeg" alt="FOMO//2LIFE 3" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="fomo-cell"><img src="fomo4.jpeg" alt="FOMO//2LIFE 4" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="fomo-cell"><img src="fomo5.jpeg" alt="FOMO//2LIFE 5" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="fomo-cell"><div class="fomo-cell-placeholder">Foto 6</div></div>
     </div>
     <div class="fomo-text-block">
@@ -243,7 +243,7 @@ footer{padding:2rem 3rem;border-top:1px solid rgba(255,255,255,0.05);display:fle
     </div>
   </div>
 </section>
-
+ 
 <!-- RAW//2LIFE -->
 <section id="raw">
   <div class="raw-inner">
@@ -267,7 +267,7 @@ footer{padding:2rem 3rem;border-top:1px solid rgba(255,255,255,0.05);display:fle
     </div>
   </div>
 </section>
-
+ 
 <!-- I NOSTRI ZAINI -->
 <section id="zaini">
   <div class="zaini-inner">
@@ -277,27 +277,27 @@ footer{padding:2rem 3rem;border-top:1px solid rgba(255,255,255,0.05);display:fle
       <div class="carousel-track-wrap">
         <div class="carousel-track" id="carouselTrack">
           <div class="carousel-slide">
-            <div class="carousel-slide-placeholder" style="background:#141414;">[ Foto zaino 1 ]</div>
+            <img src="zaino1.jpeg" alt="Zaino 1" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
             <span class="carousel-label">AXIS//ONE — Zaini</span>
             <span class="carousel-counter">01</span>
           </div>
           <div class="carousel-slide">
-            <div class="carousel-slide-placeholder" style="background:#161414;">[ Foto zaino 2 ]</div>
+            <img src="zaino2.jpeg" alt="Zaino 2" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
             <span class="carousel-label">AXIS//ONE — Zaini</span>
             <span class="carousel-counter">02</span>
           </div>
           <div class="carousel-slide">
-            <div class="carousel-slide-placeholder" style="background:#141614;">[ Foto zaino 3 ]</div>
+            <img src="zaino3.jpeg" alt="Zaino 3" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
             <span class="carousel-label">AXIS//ONE — Zaini</span>
             <span class="carousel-counter">03</span>
           </div>
           <div class="carousel-slide">
-            <div class="carousel-slide-placeholder" style="background:#161612;">[ Foto zaino 4 ]</div>
+            <img src="zaino4.jpeg" alt="Zaino 4" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
             <span class="carousel-label">AXIS//ONE — Zaini</span>
             <span class="carousel-counter">04</span>
           </div>
           <div class="carousel-slide">
-            <div class="carousel-slide-placeholder" style="background:#141414;">[ Foto zaino 5 ]</div>
+            <img src="zaino5.jpeg" alt="Zaino 5" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
             <span class="carousel-label">AXIS//ONE — Zaini</span>
             <span class="carousel-counter">05</span>
           </div>
@@ -312,7 +312,7 @@ footer{padding:2rem 3rem;border-top:1px solid rgba(255,255,255,0.05);display:fle
     </div>
   </div>
 </section>
-
+ 
 <!-- CONTATTI -->
 <section id="contatti">
   <div class="contatti-inner">
@@ -348,12 +348,12 @@ footer{padding:2rem 3rem;border-top:1px solid rgba(255,255,255,0.05);display:fle
     </div>
   </div>
 </section>
-
+ 
 <footer>
   <span class="footer-brand">AXIS//ONE &copy; 2026</span>
   <span class="footer-copy">Alife, Campania — Streetwear</span>
 </footer>
-
+ 
 <script>
 function toggleMenu(){
   document.getElementById('navLinks').classList.toggle('open');
@@ -363,40 +363,40 @@ document.querySelectorAll('.nav-links a').forEach(function(a){
     document.getElementById('navLinks').classList.remove('open');
   });
 });
-
+ 
 var current=0;
 var total=5;
 var progress=0;
 var progressTimer=null;
 var INTERVAL=4650;
-
+ 
 var track=document.getElementById('carouselTrack');
 var dotsWrap=document.getElementById('carouselDots');
 var bar=document.getElementById('progressBar');
-
+ 
 for(var i=0;i<total;i++){
   var d=document.createElement('div');
   d.className='carousel-dot'+(i===0?' active':'');
   (function(idx){d.onclick=function(){goTo(idx);};})(i);
   dotsWrap.appendChild(d);
 }
-
+ 
 function updateDots(){
   document.querySelectorAll('.carousel-dot').forEach(function(d,i){
     d.classList.toggle('active',i===current);
   });
 }
-
+ 
 function goTo(n){
   current=n;
   track.style.transform='translateX(-'+current*100+'%)';
   updateDots();
   resetProgress();
 }
-
+ 
 function carouselNext(){goTo((current+1)%total);}
 function carouselPrev(){goTo((current-1+total)%total);}
-
+ 
 function resetProgress(){
   if(progressTimer)clearInterval(progressTimer);
   progress=0;
@@ -407,7 +407,7 @@ function resetProgress(){
     if(progress>=100){carouselNext();}
   },50);
 }
-
+ 
 resetProgress();
 </script>
 </body>
