@@ -1,1 +1,414 @@
 # AxisOne
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AXIS//ONE</title>
+<link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Rajdhani:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --black:#0a0a0a;
+  --white:#f5f5f0;
+  --gray:#1a1a1a;
+  --muted:#888;
+  --rust:#8B3A1A;
+  --rust-light:#C4501E;
+  --military:#3A4A2A;
+  --military-light:#4E6535;
+  --dirt:#5C4A2A;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'Space Grotesk',sans-serif;overflow-x:hidden;}
+
+nav{position:fixed;top:0;left:0;width:100%;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:rgba(10,10,10,0.85);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,0.06);}
+.nav-logo{display:flex;align-items:center;gap:0.8rem;}
+.nav-logo-text{font-family:'Rajdhani',sans-serif;font-size:1.4rem;font-weight:700;letter-spacing:0.15em;color:var(--white);text-transform:uppercase;}
+.nav-logo-badge{width:32px;height:32px;border:1.5px solid var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.55rem;font-weight:700;letter-spacing:0.1em;color:var(--white);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:rgba(245,245,240,0.6);text-decoration:none;font-size:0.78rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover{color:var(--white);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.hamburger span{width:24px;height:1.5px;background:var(--white);transition:all 0.3s;}
+
+section{min-height:100vh;position:relative;}
+
+#home{display:flex;flex-direction:column;justify-content:center;padding-top:80px;}
+.home-hero{position:relative;height:85vh;display:flex;align-items:flex-end;overflow:hidden;}
+.home-bg{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;}
+.home-img-placeholder{background:#1c1c1c;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#444;letter-spacing:0.1em;text-transform:uppercase;width:100%;height:100%;}
+.home-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,0.95) 0%,rgba(10,10,10,0.2) 60%,transparent 100%);}
+.home-content{position:relative;z-index:2;padding:3rem;}
+.home-eyebrow{font-size:0.72rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(245,245,240,0.5);margin-bottom:1rem;}
+.home-title{font-family:'Rajdhani',sans-serif;font-size:clamp(3rem,8vw,7rem);font-weight:700;line-height:0.9;letter-spacing:-0.01em;text-transform:uppercase;margin-bottom:1.5rem;}
+.home-title span{display:block;}
+.home-sub{max-width:480px;font-size:0.95rem;line-height:1.7;color:rgba(245,245,240,0.65);margin-bottom:2rem;}
+.home-cta{display:inline-block;border:1px solid rgba(245,245,240,0.4);padding:0.75rem 2rem;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--white);text-decoration:none;transition:all 0.3s;}
+.home-cta:hover{background:var(--white);color:var(--black);}
+.home-scroll{position:absolute;right:3rem;top:50%;transform:translateY(-50%) rotate(90deg);font-size:0.65rem;letter-spacing:0.25em;color:rgba(245,245,240,0.3);text-transform:uppercase;}
+
+#chi-siamo{background:#0d0d0d;display:flex;flex-direction:column;justify-content:center;}
+.chisiamo-inner{padding:8rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.chisiamo-img-wrap{position:relative;}
+.chisiamo-img-placeholder{width:100%;aspect-ratio:4/3;background:#181818;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#333;letter-spacing:0.1em;text-transform:uppercase;}
+.chisiamo-img-label{position:absolute;bottom:-1px;left:0;background:var(--white);color:var(--black);font-family:'Rajdhani',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:0.1em;padding:0.4rem 1rem;text-transform:uppercase;}
+.chisiamo-text{padding-left:1rem;}
+.section-label{font-size:0.68rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.8rem;}
+.section-label::before{content:'';width:24px;height:1px;background:var(--muted);}
+.chisiamo-title{font-family:'Rajdhani',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:700;line-height:0.9;text-transform:uppercase;margin-bottom:2rem;}
+.chisiamo-desc{font-size:0.95rem;line-height:1.8;color:rgba(245,245,240,0.6);margin-bottom:2.5rem;}
+.team-title{font-size:0.68rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem;}
+.team-list{display:flex;flex-direction:column;gap:0.9rem;}
+.team-member{padding-bottom:0.9rem;border-bottom:1px solid rgba(255,255,255,0.06);}
+.team-name{font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;}
+.team-role{font-size:0.72rem;color:var(--muted);letter-spacing:0.08em;margin-top:0.2rem;line-height:1.4;}
+
+#fomo{background:#f5f5f0;color:#0a0a0a;display:flex;flex-direction:column;justify-content:center;}
+.fomo-inner{padding:8rem 3rem;}
+.fomo-title-wrap{text-align:center;margin-bottom:4rem;}
+.fomo-title{font-family:'Rajdhani',sans-serif;font-size:clamp(3.5rem,10vw,9rem);font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#0a0a0a;line-height:0.9;}
+.fomo-subtitle{font-size:0.72rem;letter-spacing:0.4em;text-transform:uppercase;color:#888;margin-top:0.8rem;}
+.fomo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:5rem;}
+.fomo-cell{aspect-ratio:3/4;background:#e8e8e3;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.fomo-cell-placeholder{background:#e8e8e3;display:flex;align-items:center;justify-content:center;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#aaa;width:100%;height:100%;}
+.fomo-text-block{max-width:760px;margin:0 auto;text-align:center;}
+.fomo-text-block p{font-size:0.95rem;line-height:1.9;color:#2a2a2a;margin-bottom:1.2rem;}
+.fomo-text-block .fomo-last{font-style:italic;font-size:1.05rem;font-weight:500;color:#0a0a0a;margin-top:2rem;}
+
+#raw{background:var(--black);display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
+#raw::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,255,255,0.012) 2px,rgba(255,255,255,0.012) 4px);pointer-events:none;}
+.raw-inner{padding:8rem 3rem;position:relative;z-index:1;}
+.raw-title-wrap{margin-bottom:3rem;}
+.raw-title{font-family:'Pirata One',cursive;font-size:clamp(3.5rem,10vw,9rem);line-height:0.85;color:var(--white);text-transform:uppercase;letter-spacing:0.02em;}
+.raw-title .slash{color:var(--rust-light);}
+.raw-tag{display:inline-block;background:var(--military);color:rgba(245,245,240,0.7);font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;padding:0.3rem 0.8rem;margin-bottom:1rem;}
+.raw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:4rem;}
+.raw-cell{aspect-ratio:3/4;position:relative;overflow:hidden;}
+.raw-cell-placeholder{display:flex;align-items:center;justify-content:center;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;width:100%;height:100%;}
+.raw-text-block{max-width:760px;border-left:2px solid var(--rust);padding-left:2rem;}
+.raw-text-block p{font-size:0.95rem;line-height:1.9;color:rgba(245,245,240,0.55);margin-bottom:1.2rem;}
+.raw-last{font-family:'Pirata One',cursive;font-size:1.3rem;color:rgba(245,245,240,0.8);margin-top:2rem;}
+
+#zaini{background:#0d0d0d;display:flex;flex-direction:column;justify-content:center;}
+.zaini-inner{padding:8rem 3rem;}
+.zaini-title{font-family:'Rajdhani',sans-serif;font-size:clamp(2.5rem,6vw,5.5rem);font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.5rem;}
+.zaini-title-accent{color:var(--muted);}
+.zaini-carousel{position:relative;margin:3rem 0;}
+.carousel-track-wrap{overflow:hidden;}
+.carousel-track{display:flex;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);}
+.carousel-slide{min-width:100%;aspect-ratio:16/9;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.carousel-slide-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:#333;position:absolute;inset:0;}
+.carousel-label{position:absolute;bottom:1.5rem;left:1.5rem;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(245,245,240,0.4);z-index:2;}
+.carousel-counter{position:absolute;bottom:1.5rem;right:1.5rem;font-family:'Rajdhani',sans-serif;font-size:1.5rem;font-weight:700;color:rgba(245,245,240,0.15);z-index:2;}
+.carousel-controls{display:flex;align-items:center;gap:1rem;margin-top:1.5rem;}
+.carousel-btn{width:48px;height:48px;border:1px solid rgba(255,255,255,0.15);background:transparent;color:var(--white);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.2rem;transition:all 0.2s;}
+.carousel-btn:hover{background:rgba(255,255,255,0.08);}
+.carousel-dots{display:flex;gap:6px;margin-left:auto;}
+.carousel-dot{width:6px;height:6px;background:rgba(255,255,255,0.2);border-radius:50%;cursor:pointer;transition:all 0.3s;}
+.carousel-dot.active{background:var(--white);width:20px;border-radius:3px;}
+.carousel-progress{flex:1;height:1px;background:rgba(255,255,255,0.1);position:relative;overflow:hidden;}
+.carousel-progress-bar{height:100%;background:rgba(255,255,255,0.5);width:0%;}
+
+#contatti{background:#0a0a0a;display:flex;flex-direction:column;justify-content:center;border-top:1px solid rgba(255,255,255,0.05);}
+.contatti-inner{padding:8rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;}
+.contatti-section-label{font-size:0.68rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem;display:flex;align-items:center;gap:0.8rem;}
+.contatti-section-label::before{content:'';width:24px;height:1px;background:var(--muted);}
+.contatti-names{font-family:'Rajdhani',sans-serif;font-size:1.1rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;line-height:2.2;color:rgba(245,245,240,0.9);margin-bottom:2.5rem;}
+.contatti-names span{color:var(--muted);font-size:0.7rem;font-weight:400;letter-spacing:0.05em;font-family:'Space Grotesk',sans-serif;display:block;line-height:1;margin-top:-0.4rem;margin-bottom:0.8rem;}
+.social-list{display:flex;flex-direction:column;gap:0;margin-bottom:2.5rem;}
+.social-item{display:flex;align-items:center;gap:1rem;text-decoration:none;color:var(--white);padding:0.8rem 0;border-bottom:1px solid rgba(255,255,255,0.06);transition:opacity 0.2s;}
+.social-item:hover{opacity:0.6;}
+.social-icon{width:36px;height:36px;border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.social-icon svg{width:16px;height:16px;fill:var(--white);}
+.social-handle{font-size:0.85rem;letter-spacing:0.08em;}
+.contatti-dm{font-size:0.82rem;line-height:1.8;color:rgba(245,245,240,0.45);border-top:1px solid rgba(255,255,255,0.06);padding-top:1.5rem;}
+.contatti-big{font-family:'Rajdhani',sans-serif;font-size:clamp(3rem,6vw,5rem);font-weight:700;text-transform:uppercase;line-height:0.9;margin-bottom:2rem;letter-spacing:0.02em;}
+.contatti-tagline{font-size:0.85rem;line-height:1.8;color:rgba(245,245,240,0.4);max-width:320px;}
+
+footer{padding:2rem 3rem;border-top:1px solid rgba(255,255,255,0.05);display:flex;justify-content:space-between;align-items:center;}
+.footer-brand{font-family:'Rajdhani',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:0.2em;color:rgba(255,255,255,0.2);text-transform:uppercase;}
+.footer-copy{font-size:0.68rem;letter-spacing:0.1em;color:rgba(255,255,255,0.15);}
+
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;flex-direction:column;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(10,10,10,0.98);align-items:center;justify-content:center;gap:2.5rem;z-index:200;}
+  .nav-links.open{display:flex;}
+  .nav-links a{font-size:1rem;}
+  .hamburger{display:flex;z-index:300;}
+  .home-bg{grid-template-columns:1fr;}
+  .home-bg div:last-child{display:none;}
+  .home-content{padding:1.5rem;}
+  .chisiamo-inner{grid-template-columns:1fr;gap:2.5rem;padding:5rem 1.5rem;}
+  .chisiamo-text{padding-left:0;}
+  .fomo-inner,.raw-inner,.zaini-inner{padding:5rem 1.5rem;}
+  .contatti-inner{grid-template-columns:1fr;gap:3rem;padding:5rem 1.5rem;}
+  .fomo-grid,.raw-grid{grid-template-columns:repeat(2,1fr);}
+  footer{padding:1.5rem;flex-direction:column;gap:0.5rem;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-badge">A//O</div>
+    <span class="nav-logo-text">AXIS//ONE</span>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#chi-siamo">Chi siamo</a></li>
+    <li><a href="#fomo">FOMO//2LIFE</a></li>
+    <li><a href="#raw">RAW//2LIFE</a></li>
+    <li><a href="#zaini">I nostri zaini</a></li>
+    <li><a href="#contatti">Contatti</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+  <div class="home-hero">
+    <div class="home-bg">
+      <div class="home-img-placeholder" id="homeImg1">[ FOTO 1 ]</div>
+      <div class="home-img-placeholder" id="homeImg2">[ FOTO 2 ]</div>
+    </div>
+    <div class="home-overlay"></div>
+    <div class="home-content">
+      <p class="home-eyebrow">Streetwear — Alife, Campania</p>
+      <h1 class="home-title">
+        <span>Esprimi</span>
+        <span>il tuo stile</span>
+        <span>con AXIS//ONE</span>
+      </h1>
+      <p class="home-sub">Non siamo un brand per tutti. Siamo un brand per chi sa già chi è — e lo mostra ogni giorno attraverso quello che indossa.</p>
+      <a href="#fomo" class="home-cta">Esplora le linee</a>
+    </div>
+    <span class="home-scroll">Scroll</span>
+  </div>
+</section>
+
+<!-- CHI SIAMO -->
+<section id="chi-siamo">
+  <div class="chisiamo-inner">
+    <div class="chisiamo-img-wrap">
+      <div class="chisiamo-img-placeholder" id="chisiamoImg">[ FOTO ORIZZONTALE ]</div>
+      <div class="chisiamo-img-label">AXIS//ONE</div>
+    </div>
+    <div class="chisiamo-text">
+      <p class="section-label">Chi siamo</p>
+      <h2 class="chisiamo-title">Nati ad<br>Alife.<br>Cresciuti<br>per strada.</h2>
+      <p class="chisiamo-desc">AXIS//ONE è un brand streetwear nato in Campania da tre persone con una visione comune: creare capi che parlano prima ancora che tu apra bocca. Due linee, un'identità precisa, nessun compromesso:</p>
+      <p class="team-title">Il team</p>
+      <div class="team-list">
+        <div class="team-member">
+          <div class="team-name">Leonardo Masullo</div>
+          <div class="team-role">Fondatore · Direttore creativo · Grafico principale · Referente del brand</div>
+        </div>
+        <div class="team-member">
+          <div class="team-name">Alfonso Farese</div>
+          <div class="team-role">Brand ambassador · Volto del brand · Relazioni esterne · Content creator</div>
+        </div>
+        <div class="team-member">
+          <div class="team-name">Alessandro Fappiano</div>
+          <div class="team-role">Graphic designer dedicato · Sviluppo visivo delle collezioni</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOMO//2LIFE -->
+<section id="fomo">
+  <div class="fomo-inner">
+    <div class="fomo-title-wrap">
+      <h2 class="fomo-title">FOMO//2LIFE</h2>
+      <p class="fomo-subtitle">La divisione della luce</p>
+    </div>
+    <div class="fomo-grid">
+      <div class="fomo-cell"><div class="fomo-cell-placeholder">Foto 1</div></div>
+      <div class="fomo-cell"><div class="fomo-cell-placeholder">Foto 2</div></div>
+      <div class="fomo-cell"><div class="fomo-cell-placeholder">Foto 3</div></div>
+      <div class="fomo-cell"><div class="fomo-cell-placeholder">Foto 4</div></div>
+      <div class="fomo-cell"><div class="fomo-cell-placeholder">Foto 5</div></div>
+      <div class="fomo-cell"><div class="fomo-cell-placeholder">Foto 6</div></div>
+    </div>
+    <div class="fomo-text-block">
+      <p>FOMO//2LIFE è la divisione della luce. Grafica pulita, linee definite, un'estetica costruita per distinguersi senza urlare. Felpe, t-shirt e oversize con tessuti curati e stampe nitide che resistono nel tempo — qualità che si vede, non solo che si dichiara.</p>
+      <p>Ogni pezzo è costruito con una logica precisa: niente di casuale, niente di inutile. Ogni scelta grafica, ogni dettaglio, ogni linea è lì perché ci doveva stare. Non è sovraccarico, non è minimale per moda — è esattamente quello che deve essere, né un millimetro in più né uno in meno. Un'identità visiva riconoscibile, coerente, che parla da sola senza bisogno di spiegarsi.</p>
+      <p>È la faccia pulita di AXIS//ONE. Quella che guarda dritto, che non si nasconde, che non ha bisogno di giustificarsi. Un'estetica per chi sa già quello che vuole, non scende a compromessi e lo si vede da come si veste.</p>
+      <p class="fomo-last">Non segue. Viene seguita.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RAW//2LIFE -->
+<section id="raw">
+  <div class="raw-inner">
+    <div class="raw-title-wrap">
+      <div class="raw-tag">La divisione dell'ombra</div>
+      <h2 class="raw-title">RAW<span class="slash">//</span>2LIFE</h2>
+    </div>
+    <div class="raw-grid">
+      <div class="raw-cell"><div class="raw-cell-placeholder" style="background:#1a1410;color:#2a2416;">Foto 1</div></div>
+      <div class="raw-cell"><div class="raw-cell-placeholder" style="background:#141a10;color:#1e2a16;">Foto 2</div></div>
+      <div class="raw-cell"><div class="raw-cell-placeholder" style="background:#1a1610;color:#2a2010;">Foto 3</div></div>
+      <div class="raw-cell"><div class="raw-cell-placeholder" style="background:#1a1200;color:#2a2010;">Foto 4</div></div>
+      <div class="raw-cell"><div class="raw-cell-placeholder" style="background:#141410;color:#222018;">Foto 5</div></div>
+      <div class="raw-cell"><div class="raw-cell-placeholder" style="background:#1a150e;color:#2a1a10;">Foto 6</div></div>
+    </div>
+    <div class="raw-text-block">
+      <p>Quanti brand ti hanno venduto una felpa "di qualità" che dopo tre lavaggi sembrava uno straccio? I nostri pezzi no. Felpe, t-shirt e oversize RAW//2LIFE sono costruiti per durare — tessuti pesanti, cuciture solide, stampe che resistono. Qualità che si sente prima ancora di indossarla.</p>
+      <p>Ma RAW//2LIFE è più di un capo. È una divisione nata da un'idea precisa: mostrare la realtà senza filtri. Niente di patinato, niente di costruito per piacere a tutti. Grafiche grezze, distorte, che parlano di strada, di cemento, di quello che sei davvero quando togli la maschera. L'ombra di AXIS//ONE — la parte che non si nasconde.</p>
+      <p>Ogni pezzo è pensato per rompere, non per stare nel mezzo. Se FOMO//2LIFE è la luce, RAW//2LIFE è quello che c'è sotto — crudo, reale, senza scuse.</p>
+      <p class="raw-last">Non è per tutti. Ed è esattamente questo il punto.</p>
+    </div>
+  </div>
+</section>
+
+<!-- I NOSTRI ZAINI -->
+<section id="zaini">
+  <div class="zaini-inner">
+    <p class="section-label">Collezione</p>
+    <h2 class="zaini-title">I nostri <span class="zaini-title-accent">zaini</span></h2>
+    <div class="zaini-carousel">
+      <div class="carousel-track-wrap">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-slide">
+            <div class="carousel-slide-placeholder" style="background:#141414;">[ Foto zaino 1 ]</div>
+            <span class="carousel-label">AXIS//ONE — Zaini</span>
+            <span class="carousel-counter">01</span>
+          </div>
+          <div class="carousel-slide">
+            <div class="carousel-slide-placeholder" style="background:#161414;">[ Foto zaino 2 ]</div>
+            <span class="carousel-label">AXIS//ONE — Zaini</span>
+            <span class="carousel-counter">02</span>
+          </div>
+          <div class="carousel-slide">
+            <div class="carousel-slide-placeholder" style="background:#141614;">[ Foto zaino 3 ]</div>
+            <span class="carousel-label">AXIS//ONE — Zaini</span>
+            <span class="carousel-counter">03</span>
+          </div>
+          <div class="carousel-slide">
+            <div class="carousel-slide-placeholder" style="background:#161612;">[ Foto zaino 4 ]</div>
+            <span class="carousel-label">AXIS//ONE — Zaini</span>
+            <span class="carousel-counter">04</span>
+          </div>
+          <div class="carousel-slide">
+            <div class="carousel-slide-placeholder" style="background:#141414;">[ Foto zaino 5 ]</div>
+            <span class="carousel-label">AXIS//ONE — Zaini</span>
+            <span class="carousel-counter">05</span>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" onclick="carouselPrev()" aria-label="Precedente">&#8592;</button>
+        <button class="carousel-btn" onclick="carouselNext()" aria-label="Successiva">&#8594;</button>
+        <div class="carousel-progress"><div class="carousel-progress-bar" id="progressBar"></div></div>
+        <div class="carousel-dots" id="carouselDots"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATTI -->
+<section id="contatti">
+  <div class="contatti-inner">
+    <div class="contatti-left">
+      <p class="contatti-section-label">Contatti</p>
+      <div class="contatti-names">
+        Leonardo Masullo
+        <span>Fondatore &amp; Direttore Creativo</span>
+        Alfonso Farese
+        <span>Brand Ambassador &amp; Content Creator</span>
+        Alessandro Fappiano
+        <span>Graphic Designer</span>
+      </div>
+      <div class="social-list">
+        <a href="https://instagram.com/_axis.one_" target="_blank" class="social-item">
+          <div class="social-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </div>
+          <span class="social-handle">_axis.one_</span>
+        </a>
+        <a href="https://tiktok.com/@axisone" target="_blank" class="social-item">
+          <div class="social-icon">
+            <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          </div>
+          <span class="social-handle">AXIS//ONE</span>
+        </a>
+      </div>
+      <p class="contatti-dm">Per articoli con stampa all-over, scrivici in DM su Instagram o TikTok — chatta direttamente con il nostro creator design e descrivi come vuoi il tuo pezzo. Lo costruiamo insieme.</p>
+    </div>
+    <div class="contatti-right">
+      <h2 class="contatti-big">Fatti<br>sentire.</h2>
+      <p class="contatti-tagline">Non abbiamo un numero da chiamare o un modulo da compilare. Abbiamo una DM aperta e la voglia di costruire qualcosa con te.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-brand">AXIS//ONE &copy; 2026</span>
+  <span class="footer-copy">Alife, Campania — Streetwear</span>
+</footer>
+
+<script>
+function toggleMenu(){
+  document.getElementById('navLinks').classList.toggle('open');
+}
+document.querySelectorAll('.nav-links a').forEach(function(a){
+  a.addEventListener('click',function(){
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+var current=0;
+var total=5;
+var progress=0;
+var progressTimer=null;
+var INTERVAL=4650;
+
+var track=document.getElementById('carouselTrack');
+var dotsWrap=document.getElementById('carouselDots');
+var bar=document.getElementById('progressBar');
+
+for(var i=0;i<total;i++){
+  var d=document.createElement('div');
+  d.className='carousel-dot'+(i===0?' active':'');
+  (function(idx){d.onclick=function(){goTo(idx);};})(i);
+  dotsWrap.appendChild(d);
+}
+
+function updateDots(){
+  document.querySelectorAll('.carousel-dot').forEach(function(d,i){
+    d.classList.toggle('active',i===current);
+  });
+}
+
+function goTo(n){
+  current=n;
+  track.style.transform='translateX(-'+current*100+'%)';
+  updateDots();
+  resetProgress();
+}
+
+function carouselNext(){goTo((current+1)%total);}
+function carouselPrev(){goTo((current-1+total)%total);}
+
+function resetProgress(){
+  if(progressTimer)clearInterval(progressTimer);
+  progress=0;
+  bar.style.width='0%';
+  progressTimer=setInterval(function(){
+    progress+=100/(INTERVAL/50);
+    bar.style.width=Math.min(progress,100)+'%';
+    if(progress>=100){carouselNext();}
+  },50);
+}
+
+resetProgress();
+</script>
+</body>
+</html>
